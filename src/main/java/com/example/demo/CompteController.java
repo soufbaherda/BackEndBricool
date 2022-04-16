@@ -10,8 +10,6 @@ import java.util.List;
 public class CompteController {
     @Autowired
     private CompteRepository compteRepository;
-    @Autowired
-    private ImgRepository imgRepository;
     @CrossOrigin
     @PostMapping(value = "/register", consumes = {"application/json"})
     public void creerCompte(@RequestBody Compte compte){
@@ -40,20 +38,8 @@ public class CompteController {
         }
         return"{\"exist\":\"false\"}";
     }
-    @CrossOrigin
-    @PostMapping(value = "/savepic", consumes = {"application/json"})
-    public void saveimg(@RequestBody Img img){
-        imgRepository.save(img);
-    }
-    @CrossOrigin
-    @GetMapping("/savepic/{id}")
-    public Img getImg(@PathVariable String id) {
-        List<Img> lpic=imgRepository.findAll();
-        for(Img x:lpic){
-            if(x.getId().equals(id)) return x;
-        }
-        return new Img(id,"https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg");
-    }
+
+
 
     }
 
