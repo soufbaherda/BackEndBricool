@@ -20,7 +20,7 @@ public class PostulerController {
     public Postuler PostulerprOffre(@RequestBody Postuler postulation){
         List<Postuler> Postulation = new ArrayList<Postuler>();
         Postulation.addAll(Postulerrepository.findAll());
-        if (postulation.getDescription().equals("") || postulation.getDuree()==0.0 || postulation.getPrix()==0.0 || postulation.getEmployee().getNom().equals("") || postulation.getEmployee().getPrenom().equals("") || postulation.getEmployee().getEmail().equals("") || postulation.getEmployee().getTel().equals("")){
+        if (postulation.getDescription().equals("") || postulation.getDuree()==0.0 || postulation.getPrix()==0.0 || postulation.getEmployee().getId().equals("")){
             System.out.println(postulation);
             System.out.println("it is not valid");
             return postulation;
