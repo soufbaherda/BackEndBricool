@@ -17,7 +17,6 @@ public class Offre {
     private  String titre;
     private  String titresa;
     private  String description;
-    private  float prix;
     private  String priorité;
     private  String status;
     private  String domaine;
