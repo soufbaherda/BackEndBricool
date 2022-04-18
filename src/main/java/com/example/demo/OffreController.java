@@ -35,10 +35,14 @@ public class OffreController {
         return offre;
     }
     @CrossOrigin
-    @GetMapping("/GetOffreEmp")
-    public List<Offre>getOffersEmp(@RequestParam("nom")String nom,@RequestParam("prenom") String prenom){
-        return offrerepository.findOffresByUtilisateurNomAndUtilisateurPrenom(nom,prenom);
-
+    @GetMapping("/GetOffreEmp/{id}")
+    public List<Offre>getOffersEmp(@PathVariable String id){
+        List<Offre> loffre=offrerepository.findAll();
+        List<Offre> roffre=new ArrayList<Offre>();
+        for(Offre x:loffre){
+            if(x.getUtilisateur().getId().equals(id)) roffre.add(x);
+        }
+        return roffre;
     }
 
     //Methodes de mise en formes
