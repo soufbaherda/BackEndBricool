@@ -30,6 +30,7 @@ public class OffreController {
 
     @PostMapping("/post")
     public Offre posteroffre(@RequestBody Offre offre){
+        offre.setTitresa();
         System.out.println(offre);
         offrerepository.save(offre);
         return offre;
