@@ -25,13 +25,11 @@ public class Offre {
     private String dateP;
     private String dateS;
     private Compte utilisateur;
-    private List<String> images;
-
 
     //COnstructeur, setters, getters, equals, hash et toString
     public Offre(){}
 
-    public Offre(String id, String titre, String titresa, String description, String status, String domaine, String region, String ville, String dateP, String dateS, Compte utilisateur, List<String> images) {
+    public Offre(String id, String titre, String titresa, String description, String status, String domaine, String region, String ville, String dateP, String dateS, Compte utilisateur) {
         this.id = id;
         this.titre = titre;
         this.titresa = titresa;
@@ -43,7 +41,7 @@ public class Offre {
         this.dateP = dateP;
         this.dateS = dateS;
         this.utilisateur = utilisateur;
-        this.images = images;
+        
     }
 
     public String getDateP() {
@@ -103,14 +101,6 @@ public class Offre {
         titresa = unaccentlowercase(getTitre());
     }
 
-    public List<String> getImages() {
-        return images;
-    }
-
-    public void setImages(List<String> images) {
-        this.images = images;
-    }
-
 
 
     public void setDateS() {
@@ -126,12 +116,12 @@ public class Offre {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Offre offre = (Offre) o;
-        return Objects.equals(id, offre.id) && Objects.equals(titre, offre.titre) && Objects.equals(titresa, offre.titresa) && Objects.equals(description, offre.description) && Objects.equals(status, offre.status) && Objects.equals(domaine, offre.domaine) && Objects.equals(region, offre.region) && Objects.equals(ville, offre.ville) && Objects.equals(dateP, offre.dateP) && Objects.equals(dateS, offre.dateS) && Objects.equals(utilisateur, offre.utilisateur) && Objects.equals(images, offre.images);
+        return Objects.equals(id, offre.id) && Objects.equals(titre, offre.titre) && Objects.equals(titresa, offre.titresa) && Objects.equals(description, offre.description) && Objects.equals(status, offre.status) && Objects.equals(domaine, offre.domaine) && Objects.equals(region, offre.region) && Objects.equals(ville, offre.ville) && Objects.equals(dateP, offre.dateP) && Objects.equals(dateS, offre.dateS) && Objects.equals(utilisateur, offre.utilisateur);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, titre, titresa, description, prix, priorité, status, domaine, region, ville, dateP, dateS, utilisateur, images);
+        return Objects.hash(id, titre, titresa, description, prix, priorité, status, domaine, region, ville, dateP, dateS, utilisateur);
     }
 
     @Override
@@ -148,7 +138,6 @@ public class Offre {
                 ", dateP='" + dateP + '\'' +
                 ", dateS='" + dateS + '\'' +
                 ", employeur=" + utilisateur +
-                ", images=" + images +
                 '}';
     }
 
