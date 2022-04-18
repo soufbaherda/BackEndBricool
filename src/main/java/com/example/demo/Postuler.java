@@ -1,5 +1,6 @@
-package com.example.bricool;
+package com.example.demo;
 
+import com.example.demo.Compte;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

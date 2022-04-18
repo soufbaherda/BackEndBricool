@@ -1,5 +1,4 @@
-package com.example.bricool;
-
+package com.example.demo;
 
 
 import org.springframework.data.annotation.Id;
