@@ -34,6 +34,12 @@ public class PostulerController {
             return postulation;
         }
 
+        }
+    @CrossOrigin
+    @GetMapping("/get/{id}")
+    public List<Postuler> GetDemandeById(@PathVariable String id){
+        return Postulerrepository.findByIdOffre(id);}
 
-    }
+
+
 }
