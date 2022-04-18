@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 
@@ -38,8 +39,18 @@ public class CompteController {
         }
         return"{\"exist\":\"false\"}";
     }
-
-
-
+    @CrossOrigin
+    @GetMapping("/GetAllCompte")
+    public List<Compte> getAllCompte (){
+        return compteRepository.findAll();
     }
+    @CrossOrigin
+    @GetMapping("/GetCompte/{Id}")
+    public Optional<Compte> getCompteById(@PathVariable("Id") String id){
+        return compteRepository.findById(id);
+    }
+}
+
+
+
 

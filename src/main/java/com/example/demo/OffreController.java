@@ -34,6 +34,12 @@ public class OffreController {
         offrerepository.save(offre);
         return offre;
     }
+    @CrossOrigin
+    @GetMapping("/GetOffreEmp")
+    public List<Offre>getOffersEmp(@RequestParam("nom")String nom,@RequestParam("prenom") String prenom){
+        return offrerepository.findOffresByUtilisateurNomAndUtilisateurPrenom(nom,prenom);
+
+    }
 
     //Methodes de mise en formes
     public boolean Add(List<Offre> offres ,Offre offre){
@@ -54,5 +60,6 @@ public class OffreController {
         String normalizedWord = Normalizer.normalize(s, Normalizer.Form.NFD);
         return normalizedWord.replaceAll("\\p{M}", "").toLowerCase();
     }
+
 }
 
