@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/postulation")
-public class PostulerController {
+public class  PostulerController {
 
     @Autowired
     private PostulerRepository Postulerrepository;
@@ -35,7 +35,7 @@ public class PostulerController {
         }
 
         }
-    @CrossOrigin
+
     @GetMapping("/get/{id}")
     public List<Postuler> GetDemandeById(@PathVariable String id){
         return Postulerrepository.findByIdOffre(id);}

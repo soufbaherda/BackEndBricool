@@ -1,7 +1,7 @@
 package com.example.demo;
 
 public enum Statut {
-    Disponible,
+    active,
     En_cours,
-    Colotur;
+    Coloture
 }

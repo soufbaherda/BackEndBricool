@@ -2,10 +2,14 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import com.example.demo.PostulerRepository;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import static com.example.demo.Statut.Coloture;
+import static com.example.demo.Statut.En_cours;
 
 @RestController
 @CrossOrigin
@@ -35,15 +39,16 @@ public class OffreController {
         offrerepository.save(offre);
         return offre;
     }
-    @CrossOrigin
-    @GetMapping("/GetOffreEmp/{id}")
+
+        @GetMapping("/GetOffreEmp/{id}")
     public List<Offre>getOffersEmp(@PathVariable String id){
-        List<Offre> loffre=offrerepository.findAll();
+        /*List<Offre> loffre=offrerepository.findAll();
         List<Offre> roffre=new ArrayList<Offre>();
         for(Offre x:loffre){
             if(x.getUtilisateur().getId().equals(id)) roffre.add(x);
         }
-        return roffre;
+        return roffre;*/
+        return offrerepository.findByUtilisateurId(id);
     }
 
     //Methodes de mise en formes
@@ -66,5 +71,36 @@ public class OffreController {
         return normalizedWord.replaceAll("\\p{M}", "").toLowerCase();
     }
 
+
+    @PutMapping("/UpdateOffre/{Id}/{Idemp}")
+    public Offre AcceptePostulation(@PathVariable("Id") String Id,@PathVariable("Idemp") String Idemp){
+        Offre NewOffre = offrerepository.findById(Id).get();
+        NewOffre.setStatus(En_cours);
+        NewOffre.setEmployee(Idemp);
+        offrerepository.save(NewOffre);
+        return offrerepository.findById(Id).get();
+
+    }
+    /*
+    @PutMapping("/Employe/{IdOffre}/{Id}")
+    public Offre AffecterOffre(@PathVariable("IdOffre") String IdOffre, @PathVariable("Id") String Id){
+        Offre NewOffre = offrerepository.findById(IdOffre).get();
+        NewOffre.setEmployee(Id);
+        offrerepository.save(NewOffre);
+        return offrerepository.findById(IdOffre).get();
+    }*/
+    @GetMapping("/GetEmployee/{Id}")
+    public List<Offre> GetOffresEmploye(@PathVariable("Id") String id){
+        return offrerepository.findByEmployee(id);
+    }
+    @CrossOrigin
+    @PutMapping("/CloturerOffre/{Id}")
+    public Offre TerminerPostulation(@PathVariable("Id") String Id){
+        Offre NewOffre = offrerepository.findById(Id).get();
+        NewOffre.setStatus(Coloture);
+        offrerepository.save(NewOffre);
+        return offrerepository.findById(Id).get();
+
+    }
 }
 

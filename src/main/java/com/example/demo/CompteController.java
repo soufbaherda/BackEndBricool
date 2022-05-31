@@ -46,8 +46,8 @@ public class CompteController {
     }
     @CrossOrigin
     @GetMapping("/GetCompte/{Id}")
-    public Optional<Compte> getCompteById(@PathVariable("Id") String id){
-        return compteRepository.findById(id);
+    public Compte getCompteById(@PathVariable("Id") String id){
+        return compteRepository.findById(id).get();
     }
 }
 
