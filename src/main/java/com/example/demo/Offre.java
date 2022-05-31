@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Models;
 
 
 import org.springframework.data.annotation.Id;
@@ -19,7 +19,7 @@ public class Offre {
     private  String description;
     private  float prix;
     private  String priorité;
-    private  String status;
+    private  Statuts status = Status.Disponible;
     private  String domaine;
     private String region;
     private String ville;

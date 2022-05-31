@@ -1,8 +1,9 @@
-package com.example.demo;
+package com.example.demo.Models;
 
 import com.example.demo.Compte;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 import java.util.Objects;
 
@@ -81,7 +82,7 @@ public class Postuler {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Postuler postuler = (Postuler) o;
-        return Float.compare(postuler.prix, prix) == 0 && Float.compare(postuler.duree, duree) == 0 && Objects.equals(id, postuler.id) && Objects.equals(idOffre, postuler.idOffre) && Objects.equals(description, postuler.description) && Objects.equals(employee, postuler.employee);
+        return Float.compare(postuler.prix, prix) == 0 && Float.compare(postuler.duree, duree) == 0 && Objects.equals(id, postuler.id) && Objects.equals(idOffre, postuler.idOffre) && Objects.equals(description, postuler.description) ;
     }
 
     @Override
@@ -89,14 +90,4 @@ public class Postuler {
         return Objects.hash(id, idOffre, prix, description, duree, employee);
     }
 
-    @Override
-    public String toString() {
-        return "Postuler{" +
-                ", idOffre='" + idOffre + '\'' +
-                ", prix=" + prix +
-                ", description='" + description + '\'' +
-                ", duree=" + duree +
-                ", employee=" + employee +
-                '}';
-    }
 }
